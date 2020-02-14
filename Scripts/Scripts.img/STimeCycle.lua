@@ -12,13 +12,14 @@ end
 
 modobj = {}
 
-function modobj:Create()
+function modobj:Create(i)
     local t = {}
 
     setmetatable(t,self)
     self.__index = self
 
     t.IsMission = false
+    t.__id = i
 
     return t
 end
@@ -46,8 +47,7 @@ local movet = {
 }
 
 for i = 1,100 do
-    MOD = modobj:Create()
-    MOD.__id = i
+    MOD = modobj:Create(i)
 
     function meta.__newindex(t,k,v)
         if movet[k] then
